@@ -3,20 +3,19 @@
 void setup()
 {
 
-  DDRD = 0b00000011;
+  DDRD = 0b00000111;
   //DDRD &= ~(1 << PD3); 
-
-  //DDRB = 0b00000000; 
-  DDRB |= (1 << PB0);
+  DDRB= B00000001;
 }
 
 void loop()
 {
-  
-  if (PIND & (1 << PD3)) { 
-    PORTB |= (1 << PB0); 
-  } 
-  else {
-    PORTB &= ~(1 << PB0); 
-}
+ PORTD = B00000001;
+ PORTB= ~(1<<PB0);// Inverse of the output bit 
+ delay(1000);
+ PORTD= (1<<PD1);  
+ delay(1000);
+ PORTB= (1<<PB0);
+ PORTD&= ~(1<<PD1);
+ delay(1000); 
 }
